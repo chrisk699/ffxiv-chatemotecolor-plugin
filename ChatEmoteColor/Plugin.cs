@@ -92,29 +92,6 @@ namespace ChatEmoteColor {
 
             if (type == XivChatType.StandardEmote) {
 
-                // Reference
-                //Player->Self
-                //[14:39]Player - PlayerName: Ninetta Aran, ServerId: 85, ServerName: Spriggan
-                //[14:39]RawText - Text: Ninetta Aran
-                //[14:39]Unknown - Data: 02 27 07 CF 01 01 01 FF 01 03
-                //[14:39]RawText - Text:  cheers you on!
-                //Self->Player
-
-                //[14:49]RawText - Text: You gently pat
-                //[14:49]Player - PlayerName: Ninetta Aran, ServerId: 85, ServerName: Spriggan
-                //[14:49]RawText - Text: Ninetta Aran
-                //[14:49]Unknown - Data: 02 27 07 CF 01 01 01 FF 01 03
-                //[14:49]RawText - Text: .
-                //Player->Player
-                //[14:48]Player - PlayerName: Ninetta Aran, ServerId: 85, ServerName: Spriggan
-                //[14:48]RawText - Text: Ninetta Aran
-                //[14:48]Unknown - Data: 02 27 07 CF 01 01 01 FF 01 03
-                //[14:48]RawText - Text:  offers
-                //[14:48]Player - PlayerName: Yondak Blackheart, ServerId: 85, ServerName: Spriggan
-                //[14:48]RawText - Text: Yondak Blackheart
-                //[14:48]Unknown - Data: 02 27 07 CF 01 01 01 FF 01 03
-                //[14:48]RawText - Text:  a humble greeting.
-
                 List<Payload> newPayloads = new List<Payload>();
 
                 // PlayerToSelf or SelfToPlayer interaction
