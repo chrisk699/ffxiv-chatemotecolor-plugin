@@ -131,7 +131,7 @@ namespace ChatEmoteColor
                     this.configuration.Save();
                 }
 
-                if (ImGui.InputInt("Self- emote color", ref configValue_EmoteColor_Self)) {
+                if (ImGui.InputInt("Self emote color", ref configValue_EmoteColor_Self)) {
 
                     this.configuration.EmoteColor_Self = configValue_EmoteColor_Self;
                     // preview color

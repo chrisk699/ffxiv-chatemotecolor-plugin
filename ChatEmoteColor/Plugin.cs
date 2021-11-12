@@ -104,7 +104,7 @@ namespace ChatEmoteColor {
                         message.Payloads[3].ToString().Contains("you") || 
                         (message.Payloads[3].ToString().Contains(playerName)) ||
                         (message.Payloads[3].ToString().Contains(playerNameComponents[0] + " " + playerNameComponents[1].Substring(0,1))) ||
-                        (message.Payloads[3].ToString().Contains(playerNameComponents[0].Substring(0, 1) + " " + playerNameComponents[1]))
+                        (message.Payloads[3].ToString().Contains(playerNameComponents[0].Substring(0, 1) + ". " + playerNameComponents[1]))
                     );
 
                     if (message.Payloads[0].GetType() == typeof(PlayerPayload) && playerIsAddressed) {
