@@ -10,10 +10,10 @@ using Dalamud.Game.Text.SeStringHandling.Payloads;
 using System.Collections.Generic;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Game.ClientState;
 
 namespace ChatEmoteColor {
-    public sealed class Plugin : IDalamudPlugin
-    {
+    public sealed class Plugin : IDalamudPlugin {
         public string Name => "ChatEmoteColor";
 
         private const string commandName = "/chatemotecolor";
@@ -25,6 +25,9 @@ namespace ChatEmoteColor {
 
         [PluginService]
         public ChatGui Chat { get; init; }
+
+        [PluginService]
+        public ClientState ClientState { get; init; }
         public object? RawText { get; private set; }
 
         public Plugin(
@@ -117,7 +120,17 @@ namespace ChatEmoteColor {
                 // PlayerToSelf or SelfToPlayer interaction
                 if (message.Payloads.Count == 4) {
 
-                    if (message.Payloads[0].GetType() == typeof(PlayerPayload) && message.Payloads[3] != null && message.Payloads[3].ToString().Contains("you")) {
+                    var playerName = this.ClientState.LocalPlayer.Name.TextValue;
+                    var playerNameComponents = playerName.Split(' ');
+
+                    bool playerIsAddressed = message.Payloads[3] != null && (
+                        message.Payloads[3].ToString().Contains("you") || 
+                        (message.Payloads[3].ToString().Contains(playerName)) ||
+                        (message.Payloads[3].ToString().Contains(playerNameComponents[0] + " " + playerNameComponents[1].Substring(0,1))) ||
+                        (message.Payloads[3].ToString().Contains(playerNameComponents[0].Substring(0, 1) + " " + playerNameComponents[1]))
+                    );
+
+                    if (message.Payloads[0].GetType() == typeof(PlayerPayload) && playerIsAddressed) {
 
                         // If payload starts with player payload, it's a PlayerToSelf interaction
 
@@ -129,8 +142,8 @@ namespace ChatEmoteColor {
                 } else if (message.Payloads.Count == 5) {
 
                     // If payload count is 5, it's a SelfToPlayer interaction
-                    if (this.Configuration.EmoteColor_SelfToPlayer >= 0) {
-                        newPayloads.Add(new UIForegroundPayload((ushort)this.Configuration.EmoteColor_SelfToPlayer));
+                    if (this.Configuration.EmoteColor_Self >= 0) {
+                        newPayloads.Add(new UIForegroundPayload((ushort)this.Configuration.EmoteColor_Self));
                     }
                 } else if (message.Payloads.Count == 8) {
 

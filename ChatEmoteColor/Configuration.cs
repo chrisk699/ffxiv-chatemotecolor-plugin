@@ -9,7 +9,7 @@ namespace ChatEmoteColor
     {
         public int Version { get; set; } = 0;
         public int EmoteColor_PlayerToSelf { get; set; } = -1;
-        public int EmoteColor_SelfToPlayer { get; set; } = -1;
+        public int EmoteColor_Self { get; set; } = -1;
         public int EmoteColor_PlayerToPlayer { get; set; } = -1;
 
         [NonSerialized]
