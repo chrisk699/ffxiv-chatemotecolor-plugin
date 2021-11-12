@@ -1,0 +1,12 @@
+{
+    "Author": "ArrestEverybody",
+    "Name": "ChatEmoteColor",
+    "Punchline": "Recolors emote lines in chat.",
+    "Description": "Recolors emotes in chat depending on conditions like whether your character is being addressed.",
+    "InternalName": "ChatEmoteColor",
+    "ApplicableVersion": "any",
+    "Tags": [
+        "plugin",
+        "chat"
+    ]
+}
