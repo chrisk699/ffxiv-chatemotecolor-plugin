@@ -138,26 +138,30 @@ namespace ChatEmoteColor {
             return ChatEmoteType.Unknown;
         }
 
-        private ushort GetColorForEmoteType(ChatEmoteType type) {
+        private int GetColorForEmoteType(ChatEmoteType type) {
 
-            ushort color = 0;
+            int color = 0;
 
             switch (type) {
                 case ChatEmoteType.Self:
-                    color = (ushort)this.Configuration.EmoteColor_Self;
+                    color = this.Configuration.EmoteColor_Self;
                     break;
                 case ChatEmoteType.Player:
-                    color = (ushort)this.Configuration.EmoteColor_Player;
+                    color = this.Configuration.EmoteColor_Player;
                     break;
                 case ChatEmoteType.PlayerToSelf:
-                    color = (ushort)this.Configuration.EmoteColor_PlayerToSelf;
+                    color = this.Configuration.EmoteColor_PlayerToSelf;
                     break;
                 case ChatEmoteType.PlayerToPlayer:
-                    color = (ushort)this.Configuration.EmoteColor_PlayerToPlayer;
+                    color = this.Configuration.EmoteColor_PlayerToPlayer;
                     break;
             }
 
-            return color > 0 ? color : (ushort)0;
+            if (color == -1) {
+                return -1;
+            }
+
+            return color > 0 ? color : 0;
         }
 
         public void HandleChatMessage(XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled) {
@@ -167,10 +171,11 @@ namespace ChatEmoteColor {
                 List<Payload> newPayloads = new();
 
                 ChatEmoteType emoteType = ParseMessage(ref message);
-                ushort emoteColor = GetColorForEmoteType(emoteType);
+                int emoteColor = GetColorForEmoteType(emoteType);
 
-                if (emoteColor != 0) {
-                    newPayloads.Add(new UIForegroundPayload(emoteColor));
+                if (emoteColor != -1 && emoteColor != 0) {
+
+                    newPayloads.Add(new UIForegroundPayload((ushort)emoteColor));
                     newPayloads.AddRange(message.Payloads);
                     newPayloads.Add(new UIForegroundPayload(0));
                     message = new SeString(newPayloads);
