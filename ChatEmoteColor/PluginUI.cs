@@ -67,8 +67,9 @@ namespace ChatEmoteColor
             ImGui.SetNextWindowSizeConstraints(new Vector2(375, 330), new Vector2(float.MaxValue, float.MaxValue));
             if (ImGui.Begin("ChatEmoteColor", ref this.visible, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
             {
-                ImGui.Text($"Player->Self emote color:  {this.configuration.EmoteColor_PlayerToSelf}");
                 ImGui.Text($"Self emote color: {this.configuration.EmoteColor_Self}");
+                ImGui.Text($"Player emote color: {this.configuration.EmoteColor_Player}");
+                ImGui.Text($"Player->Self emote color:  {this.configuration.EmoteColor_PlayerToSelf}");
                 ImGui.Text($"Player->Player emote color: {this.configuration.EmoteColor_PlayerToPlayer}");
 
                 if (ImGui.Button("Show Settings"))
@@ -107,11 +108,30 @@ namespace ChatEmoteColor
                 ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
             {
                 // can't ref a property, so use a local copy
-                var configValue_EmoteColor_PlayerToSelf = this.configuration.EmoteColor_PlayerToSelf;
                 var configValue_EmoteColor_Self = this.configuration.EmoteColor_Self;
+                var configValue_EmoteColor_Player = this.configuration.EmoteColor_Player;
+                var configValue_EmoteColor_PlayerToSelf = this.configuration.EmoteColor_PlayerToSelf;
                 var configValue_EmoteColor_PlayerToPlayer = this.configuration.EmoteColor_PlayerToPlayer;
 
                 ImGui.Text($"Use -1 value to disable recoloring");
+
+                if (ImGui.InputInt("Self emote color", ref configValue_EmoteColor_Self)) {
+
+                    this.configuration.EmoteColor_Self = configValue_EmoteColor_Self;
+                    // preview color
+                    PreviewChatColor((ushort)this.configuration.EmoteColor_Self);
+                    // can save immediately on change, if you don't want to provide a "Save and Close" button
+                    this.configuration.Save();
+                }
+
+                if (ImGui.InputInt("Player emote color", ref configValue_EmoteColor_Player)) {
+
+                    this.configuration.EmoteColor_Player = configValue_EmoteColor_Player;
+                    // preview color
+                    PreviewChatColor((ushort)this.configuration.EmoteColor_Player);
+                    // can save immediately on change, if you don't want to provide a "Save and Close" button
+                    this.configuration.Save();
+                }
 
                 if (ImGui.InputInt("Player->Self emote color", ref configValue_EmoteColor_PlayerToSelf)) {
 
@@ -131,14 +151,7 @@ namespace ChatEmoteColor
                     this.configuration.Save();
                 }
 
-                if (ImGui.InputInt("Self emote color", ref configValue_EmoteColor_Self)) {
-
-                    this.configuration.EmoteColor_Self = configValue_EmoteColor_Self;
-                    // preview color
-                    PreviewChatColor((ushort)this.configuration.EmoteColor_Self);
-                    // can save immediately on change, if you don't want to provide a "Save and Close" button
-                    this.configuration.Save();
-                }
+                
 
                 
             }
