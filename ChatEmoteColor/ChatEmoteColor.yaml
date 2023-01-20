@@ -1,6 +1,7 @@
 name: ChatEmoteColor
 author: Arrest Everybody
+punchline: Recolors emote lines in chat.
 description: |-
   A simple plugin that recolors emote chat lines depending on who is executing the emote and their target.
 repo_url: https://github.com/chrisk699/ffxiv-chatemotecolor-plugin
-DalamudApiLevel: 5
+DalamudApiLevel: 8

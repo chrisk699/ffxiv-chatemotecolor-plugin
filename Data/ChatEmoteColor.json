@@ -4,7 +4,7 @@
     "Punchline": "Recolors emote lines in chat.",
     "Description": "Recolors emotes in chat depending on conditions like whether your character is being addressed.",
     "InternalName": "ChatEmoteColor",
-    "DalamudApiLevel": 5,
+    "DalamudApiLevel": 8,
     "ApplicableVersion": "any",
     "Tags": [
         "plugin",
