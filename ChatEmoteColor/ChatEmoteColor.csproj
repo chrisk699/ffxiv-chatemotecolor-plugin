@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Authors></Authors>
-    <Company></Company>
+    <Authors>ArrestEverybody</Authors>
     <Version>1.0.0.0</Version>
     <Description>Chat Emote Color plugin</Description>
     <Copyright></Copyright>
@@ -17,7 +16,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(AppData)\XIVLauncher\devPlugins\ChatEmoteColor\</OutputPath>
+	<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -63,6 +62,12 @@
       <HintPath>$(DalamudLibPath)Lumina.Excel.dll</HintPath>
       <Private>false</Private>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="image\icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
