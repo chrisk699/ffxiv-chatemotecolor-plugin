@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Authors>ArrestEverybody</Authors>
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0.1</Version>
     <Description>Chat Emote Color plugin</Description>
     <Copyright></Copyright>
     <PackageProjectUrl></PackageProjectUrl>
