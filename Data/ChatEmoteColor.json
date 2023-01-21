@@ -1,13 +1,16 @@
 {
-    "Author": "ArrestEverybody",
-    "Name": "ChatEmoteColor",
-    "Punchline": "Recolors emote lines in chat.",
-    "Description": "Recolors emotes in chat depending on conditions like whether your character is being addressed.",
-    "InternalName": "ChatEmoteColor",
-    "DalamudApiLevel": 8,
-    "ApplicableVersion": "any",
-    "Tags": [
-        "plugin",
-        "chat"
-    ]
+  "Author": "ArrestEverybody",
+  "Name": "ChatEmoteColor",
+  "Punchline": "Recolors emote lines in chat.",
+  "Description": "Recolors emotes in chat depending on conditions like whether your character is being addressed.",
+  "InternalName": "ChatEmoteColor",
+  "Changelog": null,
+  "Tags": [
+    "plugin",
+    "chat"
+  ],
+  "CategoryTags": null,
+  "RepoUrl": "https://github.com/chrisk699/ffxiv-chatemotecolor-plugin",
+  "ImageUrls": null,
+  "IconUrl": "https://github.com/chrisk699/ffxiv-chatemotecolor-plugin/blob/main/ChatEmoteColor/image/icon.png"
 }
